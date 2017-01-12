@@ -1,0 +1,57 @@
+version: '2'
+
+###Mongo DB Service
+services:
+ some-mongo:
+  image: "mongo:3"
+  volumes:
+    - ./data/mongo:/data/db
+  environment:
+    TZ: America/Sao_Paulo
+  logging:
+    driver: gelf
+    options:
+      gelf-address: "udp://127.0.0.1:12201"
+#  restart: always
+
+###ELK Service
+ some-elasticsearch:
+  image: "elasticsearch:2"
+  command: "elasticsearch -Des.cluster.name='graylog'"
+  ports:
+    - "9200:9200"
+    - "9300:9300"
+  volumes:
+    - ./data/elasticsearch:/usr/share/elasticsearch/data
+  environment:
+    TZ: America/Sao_Paulo
+  logging:
+    driver: gelf
+    options:
+      gelf-address: "udp://127.0.0.1:12201"
+#  restart: always
+
+###GrayLog2 Service AllInONe
+ graylog:
+  image: "graylog2/server:2.1.2-1"
+  volumes:
+    - ./data/journal:/usr/share/graylog/data/journal
+    - ./config/:/usr/share/graylog/data/config
+  environment:
+    TZ: America/Sao_Paulo
+    GRAYLOG_PASSWORD_SECRET: BmrrpND6CplVGbJ3e5InoZvLUbbGNJ7CykjMbeElArnEcslT82NFbhwP6dLxEkv0f2eKejLjTFdDP4OTCNGuwHt5Uj28FJ2O
+    GRAYLOG_ROOT_PASSWORD_SHA2: a4dd5658ec0219465b705ea7c7435d9786a3c66d4f448cabd7488dabceafb699
+    GRAYLOG_REST_TRANSPORT_URI: http://127.0.0.1:12900
+  links:
+    - some-mongo:mongo
+    - some-elasticsearch:elasticsearch
+  ports:
+    - "9000:9000"
+    - "12900:12900"
+    - "12201:12201"
+    - "12201/udp:12201/udp"
+  logging:
+    driver: gelf
+    options:
+      gelf-address: "udp://127.0.0.1:12201"
+#  restart: always
