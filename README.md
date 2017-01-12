@@ -18,7 +18,7 @@ As linhas padrões mostradas abaixo, é a configuração da TimeZone e o envio d
       gelf-address: "udp://127.0.0.1:12201"
 ```
 Temos também essas linhas abaixo, a configuração de PASSWORD_SECRET / PASSWORD_SHA2 estão padrões como (user: admin pass: password123456) , O REST_TRANSPOR para acesso localhost , Os links para comunicação de todos os containers internamente e as portas de conexão necessárias. 
-Para mais info de como trocar a PASS SECRET e Etcs: (http://docs.graylog.org/en/2.1/index.html)
+Para mais info de como trocar a PASS SECRET e Etcs: [Graylog2 DOCs](http://docs.graylog.org/en/2.1/index.html)
 ```shell
     GRAYLOG_PASSWORD_SECRET: BmrrpND6CplVGbJ3e5InoZvLUbbGNJ7CykjMbeElArnEcslT82NFbhwP6dLxEkv0f2eKejLjTFdDP4OTCNGuwHt5Uj28FJ2O
     GRAYLOG_ROOT_PASSWORD_SHA2: a4dd5658ec0219465b705ea7c7435d9786a3c66d4f448cabd7488dabceafb699
