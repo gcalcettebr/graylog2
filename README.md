@@ -6,9 +6,9 @@ Executando o docker-compose
 
 Bom vou explicar um pouco do arquivo .yml
 
-O compose executa o mongo sem nenhuma configuralçao especial, executa o elasticsearch com as portas necessarias e executa o graylog2 com algumas configurações marotas.
+O compose executa o mongo sem nenhuma configuração especial, executa o elasticsearch com as portas necessárias e executa o graylog2 com algumas configurações marotas.
 
-As linhas padrões abaixo, é a configuração da TimeZone e  o envio de logs do container via GELF para o proprio Graylog2.
+As linhas padrões abaixo, é a configuração da TimeZone e  o envio de logs do container via GELF para o próprio Graylog2.
 ```shell
   environment:
     TZ: America/Sao_Paulo
@@ -36,7 +36,7 @@ Para mais info de como trocar a PASS SECRET e Etcs: (http://docs.graylog.org/en/
 Falando agora de Persistência de Dados
 --------------------------------------
 Bom, como estamos rodando em container todo dado armazenado dentro do container sera perdido quando matarmos o container. 
-Então configuramos os VOLUMES para um volume /data padrão , claro que voce pode fazer algo "melhor" mas aqui é apenas um exemplo. congifurando assim todos os arquivos de logs e configurações realizadas no graylog2 não seram perdidas.
+Então configuramos os VOLUMES para um /data padrão, claro que você pode fazer algo "melhor" mas aqui é apenas um exemplo. configurando dessa forma todos os arquivos de logs e configuração vão ser mantidos.
 
 Para saber mais sobre persistência de dados e tals 
 
@@ -80,13 +80,13 @@ E vai aparecer assim:
 
 Com isso o INPUT já está Funcionando.
 
-Na pagina inicial já vai ter log dos containers.
+Na página inicial já vai ter log dos containers.
 ![alt tag](https://github.com/gcalcettebr/dockerizando/blob/master/jpg/Logs.png)
 
 
 Bom Essa foi um basicão de como rodar um container graylog2 e configurar para receber gelf de containers.
 
-O graylog2 tem muito material na propria documentação da pagina oficial e da para costumizar bastante os inputs e dashboards. aqui eu não mostrei como fazer um dashboard mas é bem intuitivo a parada, vou deixar uma imagem aqui dos dashboards que ja montei para monitoramente. ;)
+O graylog2 tem muito material na própria documentação da pagina oficial e da para customizar bastante os inputs e dashboards. aqui eu não mostrei como fazer um dashboard mas é bem intuitivo a parada, vou deixar uma imagem aqui dos dashboards que já montei para monitoramento. ;)
 
 ![alt tag](https://github.com/gcalcettebr/dockerizando/blob/master/jpg/dashboard.png)
 
